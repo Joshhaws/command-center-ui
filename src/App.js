@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
+import './App.scss';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
 import Nav from './components/Nav';
 import Landing from './components/Landing';
@@ -16,13 +16,13 @@ class App extends Component {
     return (
       <div>
         <Nav />
-        <div>
+        <Switch> {/* This is a new thing in React 16 I believe. It is a little better for memory/time I think (just a switch statement) */}
           <Route exact path="/" component={Landing} />
           <Route exact path="/About" component={About} />
           <Route exact path="/Contact" component={Contact} />
           <Route exact path="/Login" component={Login} />
           <Route exact path="/Register" component={Register} />
-        </div>
+        </Switch>
         <Footer />
       </div>
     );
