@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import './Register.scss';
-import { Link } from 'react-router-dom';
 
 class Register extends Component {
+    ding(e) {
+        console.log('test');
+        e.preventDefault();
+    }
+
     render() {
         return(
             <div className="body-content">
@@ -15,19 +19,22 @@ class Register extends Component {
                             </div>
                             
                             <div>
-                                <input className="input-field"></input>
-                                <div className="input-label">Username</div>
-                                <input type="password" className="input-field"></input>
-                                <div className="input-label">Password</div>
-                                <input type="password" className="input-field"></input>
-                                <div className="input-label">Confirm Password</div>
-                                <button className="login-button">Sign Up</button>
-                                {/* <Link to="/register" className="secondary-link">Forgot Password?</Link> */}
+                                <form onSubmit={this.ding}>
+                                    <input className="input-field"></input>
+                                    <div className="input-label">Username</div>
+                                    <input type="password" className="input-field"></input>
+                                    <div className="input-label">Password</div>
+                                    <input type="password" className="input-field"></input>
+                                    <div className="input-label">Confirm Password</div>
+                                    <input type="submit" className="login-button" value="Sign Up" />
+                                </form>
+                                
+                                {/* <button onClick={this.ding} className="login-button">Sign Up</button> */}
                             </div>        
                         </div>
                     </div>
                     <div className="right-section">
-                        <img className="right-section-logo" src="logo.svg"/>
+                        <img className="right-section-logo" src="logo.svg" alt="logo" />
                         <div className="right-section-content">Command Center</div>
                     </div>
                 </div>

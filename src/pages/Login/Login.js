@@ -25,7 +25,7 @@ class Login extends Component {
                         </div>
                     </div>
                     <div className="right-section">
-                        <img className="right-section-logo" src="logo.svg"/>
+                        <img className="right-section-logo" src="logo.svg" alt="logo" />
                         <div className="right-section-content">Command Center</div>
                     </div>
                 </div>
