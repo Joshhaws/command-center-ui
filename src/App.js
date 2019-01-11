@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import './App.scss';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
-import Nav from './components/Nav';
-import Landing from './components/Landing';
-import About from './components/About';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import Login from './components/Login';
-import Register from './components/Register';
+import Nav from './components/Nav/Nav';
+import Landing from './pages/Landing/Landing';
+import About from './pages/About/About';
+import Contact from './pages/Contact/Contact';
+import Footer from './components/Footer/Footer';
+import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
 
 
 class App extends Component {
