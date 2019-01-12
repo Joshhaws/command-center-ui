@@ -15,12 +15,14 @@ class Login extends Component {
                             </div>
                             
                             <div>
-                                <input className="input-field"></input>
-                                <div className="input-label">Username</div>
-                                <input type="password" className="input-field"></input>
-                                <div className="input-label">Password</div>
-                                <button className="login-button">Login</button>
-                                <Link to="/register" className="secondary-link">Forgot Password?</Link>
+                                <form>
+                                    <input className="input-field"></input>
+                                    <div className="input-label">Username</div>
+                                    <input type="password" className="input-field"></input>
+                                    <div className="input-label">Password</div>
+                                    <button className="login-button">Login</button>
+                                    <Link to="/register" className="secondary-link">Forgot Password?</Link>
+                                </form>
                             </div>        
                         </div>
                     </div>
