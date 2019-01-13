@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.scss';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import Nav from './components/Nav/Nav';
 import Landing from './pages/Landing/Landing';
@@ -9,9 +9,32 @@ import Contact from './pages/Contact/Contact';
 import Footer from './components/Footer/Footer';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
+import Dashboard from './pages/Dashboard/Dashboard';
 
+
+const PrivateRoute = ({ component: Component, ...rest }) => (
+    <Route {...rest} render={(props) => (
+      fakeAuth.isAuthenticated === true
+        ? <Component {...props} />
+        : <Redirect to='/Login' />
+    )} />
+)
+
+const fakeAuth = {
+  isAuthenticated: false,
+  authenticate(cb) {
+    this.isAuthenticated = true
+    setTimeout(cb, 100) // fake async
+  },
+  signout(cb) {
+    this.isAuthenticated = false
+    setTimeout(cb, 100) // fake async
+  }
+}
 
 class App extends Component {
+  
+
   render() {
     return (
       <div>
@@ -22,6 +45,7 @@ class App extends Component {
           <Route exact path="/Contact" component={Contact} />
           <Route exact path="/Login" component={Login} />
           <Route exact path="/Register" component={Register} />
+          <PrivateRoute exact path="/Dashboard" component={Dashboard} />
         </Switch>
         <Footer />
       </div>
