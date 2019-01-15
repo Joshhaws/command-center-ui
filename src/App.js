@@ -14,7 +14,7 @@ import Dashboard from './pages/Dashboard/Dashboard';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route {...rest} render={(props) => (
-      fakeAuth.isAuthenticated === true
+      fakeAuth.isAuthenticated === false
         ? <Component {...props} />
         : <Redirect to='/Login' />
     )} />
@@ -33,9 +33,25 @@ const fakeAuth = {
 }
 
 class App extends Component {
-  
+  state = {
+    redirectToReferrer: false
+  }
+
+  login = () => {
+    fakeAuth.authenticate(() => {
+      this.setState(() => ({
+        redirectToReferrer: true
+      }))
+    })
+  }
 
   render() {
+    const { redirectToReferrer } = this.state
+
+    if (redirectToReferrer === true) {
+      return <Redirect to='/' />
+    }
+
     return (
       <div>
         <Nav />
