@@ -4,7 +4,7 @@ import './Dashboard.scss';
 class Dashboard extends Component {
     render() {
         return(
-            <div className="body-content">Hello</div>
+            <div className="body-content">Hello!</div>
         )
     }
 }
