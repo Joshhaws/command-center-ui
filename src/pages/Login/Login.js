@@ -3,6 +3,31 @@ import './Login.scss';
 import { Link } from 'react-router-dom';
 
 class Login extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: '',
+            password: ''
+        };
+
+        this.handleUsernameChange = this.handleUsernameChange.bind(this);
+        this.handlePasswordChange = this.handlePasswordChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleUsernameChange(event) {
+        this.setState({username: event.target.value});
+    }
+
+    handlePasswordChange(event) {
+        this.setState({password: event.target.value});
+    }
+
+    handleSubmit(event) {
+        alert('maybe it is working ' + this.state.username + ' ' + this.state.password);
+        event.preventDefault();
+    }
+
     render() {
         return(
             <div className="body-content">
@@ -15,12 +40,12 @@ class Login extends Component {
                             </div>
                             
                             <div>
-                                <form>
-                                    <input className="input-field"></input>
+                                <form onSubmit={this.handleSubmit}>
+                                    <input type="text" className="input-field" value={this.state.username} onChange={this.handleUsernameChange}></input>
                                     <div className="input-label">Username</div>
-                                    <input type="password" className="input-field"></input>
+                                    <input type="password" className="input-field" value={this.state.password} onChange={this.handlePasswordChange}></input>
                                     <div className="input-label">Password</div>
-                                    <button className="login-button">Login</button>
+                                    <input type="submit" className="login-button" value="Login"/>
                                     <Link to="/register" className="secondary-link">Forgot Password?</Link>
                                 </form>
                             </div>        
