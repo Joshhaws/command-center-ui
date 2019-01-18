@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Login.scss';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 class Login extends Component {
     constructor(props) {
@@ -24,7 +25,13 @@ class Login extends Component {
     }
 
     handleSubmit(event) {
-        alert('maybe it is working ' + this.state.username + ' ' + this.state.password);
+        axios.get('https://httpbin.org/get', {headers: {'Access-Control-Allow-Origin': '*'}})
+            .then(res => {
+                console.log(res);
+            })
+            .catch(err => {
+                console.log(err);
+            });
         event.preventDefault();
     }
 
