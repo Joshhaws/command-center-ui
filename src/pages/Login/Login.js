@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './Login.scss';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
+import Dashboard from '../Dashboard/Dashboard';
 
 class Login extends Component {
     constructor(props) {
@@ -28,6 +29,10 @@ class Login extends Component {
         axios.get('https://httpbin.org/get', {headers: {'Access-Control-Allow-Origin': '*'}})
             .then(res => {
                 console.log(res);
+                if (this.state.username === 'josh' && this.state.password === 'example1') {
+                    console.log('testestsetestes');
+                    window.location = "/Dashboard";
+                };
             })
             .catch(err => {
                 console.log(err);
